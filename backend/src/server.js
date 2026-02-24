@@ -13,7 +13,8 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: 'https://cipher-sql-studio-inky.vercel.app/' }));
+
 app.use(express.json());
 
 app.get('/api/health', (req, res) => {
