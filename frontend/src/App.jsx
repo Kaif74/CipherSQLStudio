@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/layout/Navbar';
 import AssignmentList from './pages/AssignmentList/AssignmentList';
 import AssignmentAttempt from './pages/AssignmentAttempt/AssignmentAttempt';
@@ -19,6 +20,7 @@ function App() {
               </Routes>
             </main>
           </div>
+          <Analytics />
         </Router>
       </AuthProvider>
     </ThemeProvider>
