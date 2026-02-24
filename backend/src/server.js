@@ -13,7 +13,7 @@ connectDB();
 
 const app = express();
 
-app.use(cors({ origin: 'https://cipher-sql-studio-inky.vercel.app/' }));
+app.use(cors({ origin: 'https://cipher-sql-studio-inky.vercel.app' }));
 
 app.use(express.json());
 
