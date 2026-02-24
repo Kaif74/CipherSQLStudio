@@ -1,6 +1,22 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+.loading-state,
+.error-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
+    height: calc(100vh - 64px);
+    width: 100%;
+    color: $text-secondary;
+    font-size: $font-lg;
+}
+
+.error-state {
+    color: $error-color;
+}
+
 .assignment-attempt {
     display: flex;
     flex-direction: column;
