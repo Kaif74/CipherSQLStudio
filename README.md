@@ -1,6 +1,6 @@
 # CipherSQL Studio
 
-A SQL practice platform. Write and run SQL queries against a live PostgreSQL sandbox, get AI-powered hints, and track your progress across 20 problems.
+A SQL practice platform. Write and run SQL queries against a live PostgreSQL sandbox, get AI-powered hints, and track your progress across problems.
 
 Built with React, Node.js/Express, MongoDB, and PostgreSQL.
 
@@ -26,8 +26,8 @@ Built with React, Node.js/Express, MongoDB, and PostgreSQL.
 1. Clone the repo
 
 ```bash
-git clone https://github.com/<your-username>/cipher-assignment.git
-cd cipher-assignment
+git clone https://github.com/<your-username>/CipherSQLStudio.git
+cd CipherSQLStudio
 ```
 
 2. Backend
