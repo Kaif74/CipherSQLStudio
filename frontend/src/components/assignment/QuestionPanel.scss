@@ -1,0 +1,37 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.question-panel {
+    @include premium-card;
+    display: flex;
+    flex-direction: column;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        padding: $spacing-md;
+        border-bottom: 1px solid $border-color;
+        background-color: $surface-raised;
+        border-top-left-radius: $radius-lg;
+        border-top-right-radius: $radius-lg;
+
+        h2 {
+            font-size: $font-base;
+            font-weight: 600;
+            color: $text-main;
+            margin: 0;
+        }
+
+        .icon {
+            color: $primary-color;
+        }
+    }
+
+    &__content {
+        padding: $spacing-md;
+        color: $text-secondary;
+        font-size: $font-sm;
+        line-height: 1.6;
+    }
+}

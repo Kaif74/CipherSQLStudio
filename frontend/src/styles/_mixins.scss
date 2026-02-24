@@ -1,0 +1,127 @@
+@use 'variables' as *;
+
+// Breakpoints
+$breakpoint-sm: 320px;
+$breakpoint-md: 641px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1281px;
+
+// Media Queries
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin respond-to($breakpoint) {
+    @if $breakpoint =='sm' {
+        @media (min-width: $breakpoint-sm) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =='md' {
+        @media (min-width: $breakpoint-md) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =='lg' {
+        @media (min-width: $breakpoint-lg) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint =='xl' {
+        @media (min-width: $breakpoint-xl) {
+            @content;
+        }
+    }
+}
+
+@mixin premium-card {
+    background: $surface-bg;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-sm;
+    border: 1px solid $border-color;
+    transition: all $transition-normal;
+
+    &:hover {
+        box-shadow: $shadow-md;
+        border-color: $primary-light;
+    }
+}
+
+// Button mixins
+@mixin btn-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-md;
+    font-weight: 500;
+    font-size: $font-sm;
+    transition: all $transition-fast;
+    cursor: pointer;
+    border: none;
+    gap: $spacing-sm;
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+@mixin btn-primary {
+    @include btn-base;
+    background-color: $primary-color;
+    color: white;
+
+    &:hover:not(:disabled) {
+        background-color: $primary-hover;
+        transform: translateY(-1px);
+        box-shadow: $shadow-sm;
+    }
+
+    &:active:not(:disabled) {
+        transform: translateY(0);
+    }
+}
+
+@mixin btn-outline {
+    @include btn-base;
+    background-color: transparent;
+    color: $text-main;
+    border: 1px solid $border-color;
+
+    &:hover:not(:disabled) {
+        background-color: $surface-raised;
+        border-color: $primary-color;
+    }
+}
+
+@mixin scrollbar {
+    &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $border-color;
+        border-radius: $radius-full;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: $text-muted;
+    }
+}

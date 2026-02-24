@@ -1,0 +1,161 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.results-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: $surface-bg;
+
+    .results-header {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        padding: $spacing-xs $spacing-sm;
+        background-color: $surface-raised;
+        border-bottom: 1px solid $border-color;
+
+        h3 {
+            font-size: $font-sm;
+            font-weight: 600;
+            margin: 0;
+            color: $text-secondary;
+        }
+
+        .icon {
+            color: $text-secondary;
+        }
+    }
+
+    .results-content {
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .results-empty,
+    .results-loading {
+        flex: 1;
+        @include flex-center;
+        flex-direction: column;
+        color: $text-muted;
+        font-size: $font-sm;
+        gap: $spacing-md;
+        padding: $spacing-xl;
+        text-align: center;
+    }
+
+    .spinner {
+        width: 24px;
+        height: 24px;
+        border: 3px solid rgba($primary-color, 0.2);
+        border-top-color: $primary-color;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .results-error {
+        flex: 1;
+        display: flex;
+        gap: $spacing-md;
+        padding: $spacing-lg;
+        background-color: rgba($error-color, 0.05);
+        color: $error-color;
+
+        .error-icon {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .error-message {
+            h4 {
+                margin: 0 0 $spacing-xs 0;
+                font-weight: 600;
+                font-size: $font-base;
+            }
+
+            p {
+                margin: 0;
+                font-family: $font-mono;
+                font-size: $font-sm;
+                line-height: 1.5;
+                white-space: pre-wrap;
+            }
+        }
+    }
+
+    .results-success {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        overflow: hidden;
+
+        .success-banner {
+            display: flex;
+            align-items: center;
+            gap: $spacing-sm;
+            padding: $spacing-sm $spacing-md;
+            background-color: rgba($success-color, 0.05);
+            border-bottom: 1px solid rgba($success-color, 0.2);
+            color: $success-color;
+            font-size: $font-sm;
+            font-weight: 500;
+        }
+
+        .table-responsive {
+            flex: 1;
+            overflow: auto;
+            @include scrollbar;
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: $font-sm;
+
+                th,
+                td {
+                    padding: $spacing-sm $spacing-md;
+                    text-align: left;
+                    border-bottom: 1px solid $border-color;
+                    white-space: nowrap;
+                }
+
+                th {
+                    background-color: $surface-raised;
+                    color: $text-secondary;
+                    font-weight: 600;
+                    position: sticky;
+                    top: 0;
+                    z-index: 10;
+                }
+
+                tbody tr {
+                    transition: background-color $transition-fast;
+
+                    &:hover {
+                        background-color: $surface-raised;
+                    }
+                }
+
+                .no-rows {
+                    text-align: center;
+                    color: $text-muted;
+                    font-style: italic;
+                    padding: $spacing-xl;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,119 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.assignment-attempt {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 64px); // Adjust based on navbar height
+    padding-bottom: $spacing-md;
+
+    .attempt-header {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-md;
+        margin-bottom: $spacing-lg;
+
+        @include respond-to('md') {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &__left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: $spacing-xs;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: $text-secondary;
+            font-size: $font-sm;
+            font-weight: 500;
+            transition: color $transition-fast;
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
+
+        &__title {
+            font-size: $font-xl;
+            color: $text-main;
+            margin: 0;
+            margin-top: 10px;
+            margin-left: 5px;
+
+            @include respond-to('md') {
+                font-size: $font-2xl;
+            }
+        }
+
+        &__actions {
+            display: flex;
+            gap: $spacing-md;
+
+            .btn-hint {
+                @include btn-outline;
+            }
+
+            .btn-run {
+                @include btn-primary;
+                min-width: 120px;
+            }
+        }
+    }
+
+    .attempt-layout {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-md;
+        flex: 1;
+        overflow: hidden;
+
+        @include respond-to('lg') {
+            flex-direction: row;
+        }
+
+        .layout-col {
+            display: flex;
+            flex-direction: column;
+            gap: $spacing-md;
+
+            &--sidebar {
+                flex: 1;
+
+                @include respond-to('lg') {
+                    flex: 0 0 320px;
+                }
+
+                @include respond-to('xl') {
+                    flex: 0 0 400px;
+                }
+
+                overflow-y: auto;
+            }
+
+            &--main {
+                flex: 2;
+                overflow: hidden;
+            }
+        }
+
+        .editor-container {
+            flex: 1;
+            min-height: 250px;
+            @include premium-card;
+            overflow: hidden;
+        }
+
+        .results-container {
+            flex: 1;
+            min-height: 250px;
+            @include premium-card;
+            overflow: hidden;
+        }
+    }
+}

@@ -1,0 +1,35 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.sql-editor-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #1e1e1e; // Match VS Code Dark Theme background
+
+    .editor-header {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        padding: $spacing-xs $spacing-sm;
+        background-color: #252526; // Match VS Code Dark Theme tab bar
+        border-bottom: 1px solid #333;
+        color: #cccccc;
+
+        h3 {
+            font-size: $font-sm;
+            font-weight: 500;
+            margin: 0;
+            font-family: $font-mono;
+        }
+
+        .icon {
+            color: $primary-color;
+        }
+    }
+
+    .editor-wrapper {
+        flex: 1;
+        overflow: hidden;
+    }
+}

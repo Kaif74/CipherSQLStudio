@@ -1,0 +1,12 @@
+{
+  "name": "cipher-assignment",
+  "version": "1.0.0",
+  "description": "A LeetCode-style SQL practice platform. Write and run SQL queries against a live PostgreSQL sandbox, get AI-powered hints, and track your progress across 20 problems.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

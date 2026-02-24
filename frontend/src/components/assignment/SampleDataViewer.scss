@@ -1,0 +1,176 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.sample-data-viewer {
+    @include premium-card;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-height: 400px;
+
+    .table-selector {
+        display: flex;
+        gap: $spacing-xs;
+        padding: $spacing-xs $spacing-sm;
+        border-bottom: 1px solid $border-color;
+        background-color: $surface-raised;
+        flex-wrap: wrap;
+
+        &__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px $spacing-sm;
+            background: transparent;
+            border: 1px solid $border-color;
+            border-radius: $radius-full;
+            font-size: $font-xs;
+            font-weight: 500;
+            color: $text-secondary;
+            cursor: pointer;
+            transition: all $transition-fast;
+
+            &:hover {
+                border-color: $primary-color;
+                color: $primary-color;
+            }
+
+            &.active {
+                background-color: $primary-color;
+                border-color: $primary-color;
+                color: white;
+            }
+        }
+    }
+
+    .table-name-badge {
+        display: flex;
+        align-items: center;
+        gap: $spacing-xs;
+        padding: $spacing-xs $spacing-sm;
+        background-color: rgba($primary-color, 0.08);
+        color: $primary-color;
+        font-size: $font-xs;
+        font-family: $font-mono;
+        border-bottom: 1px solid $border-color;
+
+        strong {
+            color: $primary-color;
+            font-weight: 700;
+        }
+    }
+
+    .viewer-header {
+        background-color: $surface-raised;
+        border-bottom: 1px solid $border-color;
+        padding: $spacing-xs $spacing-sm;
+    }
+
+    .viewer-tabs {
+        display: flex;
+        gap: $spacing-xs;
+
+        .tab-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: $spacing-xs $spacing-sm;
+            background: transparent;
+            border: none;
+            border-radius: $radius-sm;
+            font-size: $font-xs;
+            font-weight: 600;
+            color: $text-secondary;
+            cursor: pointer;
+            transition: all $transition-fast;
+
+            &:hover {
+                background-color: rgba($primary-color, 0.05);
+                color: $primary-hover;
+            }
+
+            &.active {
+                background-color: $surface-bg;
+                color: $primary-color;
+                box-shadow: $shadow-sm;
+            }
+        }
+    }
+
+    .viewer-content {
+        flex: 1;
+        overflow-y: auto;
+        @include scrollbar;
+        padding: $spacing-sm;
+        background-color: $surface-bg;
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            @include scrollbar;
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: $font-sm;
+
+                th,
+                td {
+                    padding: $spacing-sm;
+                    text-align: left;
+                    border-bottom: 1px solid $border-color;
+                    white-space: nowrap;
+                }
+
+                th {
+                    background-color: $surface-raised;
+                    color: $text-secondary;
+                    font-weight: 600;
+                    position: sticky;
+                    top: 0;
+                    z-index: 10;
+                }
+
+                tbody tr {
+                    transition: background-color $transition-fast;
+
+                    &:hover {
+                        background-color: $surface-raised;
+                    }
+                }
+            }
+        }
+
+        .schema-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            .schema-item {
+                display: flex;
+                justify-content: space-between;
+                padding: $spacing-xs $spacing-sm;
+                border-radius: $radius-sm;
+                background-color: $surface-raised;
+                font-family: $font-mono;
+                font-size: $font-xs;
+
+                .col-name {
+                    color: $primary-color;
+                    font-weight: 600;
+                }
+
+                .col-type {
+                    color: $text-muted;
+                }
+            }
+        }
+
+        .empty-state {
+            padding: $spacing-lg;
+            text-align: center;
+            color: $text-muted;
+            font-style: italic;
+        }
+    }
+}

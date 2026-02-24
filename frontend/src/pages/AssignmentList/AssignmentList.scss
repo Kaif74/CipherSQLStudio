@@ -1,0 +1,201 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.assignment-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+
+    .list-toolbar {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-md;
+
+        @include respond-to('md') {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .toolbar-tabs {
+            display: flex;
+            gap: $spacing-sm;
+            flex-wrap: wrap;
+
+            .tab {
+                background: transparent;
+                border: none;
+                color: $text-secondary;
+                padding: 6px 16px;
+                border-radius: $radius-full;
+                font-size: $font-sm;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all $transition-fast;
+
+                &:hover {
+                    color: $text-main;
+                    background-color: $surface-raised;
+                }
+
+                &.active {
+                    background-color: $surface-bg;
+                    color: $text-main;
+                }
+            }
+        }
+
+        .toolbar-search {
+            position: relative;
+            width: 100%;
+
+            @include respond-to('md') {
+                width: 250px;
+            }
+
+            .search-icon {
+                position: absolute;
+                left: $spacing-sm;
+                top: 50%;
+                transform: translateY(-50%);
+                color: $text-muted;
+            }
+
+            input {
+                width: 100%;
+                padding: 8px $spacing-sm 8px 32px;
+                border: 1px solid transparent;
+                border-radius: $radius-md;
+                background-color: $surface-raised;
+                color: $text-main;
+                font-size: $font-sm;
+                transition: all $transition-fast;
+
+                &:focus {
+                    outline: none;
+                    background-color: $surface-bg;
+                    border-color: $border-color;
+                }
+            }
+        }
+    }
+
+    .table-container {
+        background-color: transparent;
+        border-radius: $radius-md;
+        overflow-x: auto;
+    }
+
+    .problem-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        font-size: $font-sm;
+
+        th {
+            color: $text-muted;
+            font-weight: 500;
+            padding: $spacing-sm $spacing-md;
+            border-bottom: 2px solid $border-color;
+        }
+
+        td {
+            padding: 14px $spacing-md;
+            color: $text-main;
+        }
+
+        .row-even {
+            background-color: transparent;
+        }
+
+        .row-odd {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        tr {
+            transition: background-color $transition-fast;
+            border-bottom: 1px solid $border-color;
+
+            &:hover {
+                background-color: $surface-raised;
+            }
+        }
+
+        .col-status {
+            width: 48px;
+            text-align: center;
+
+            .status-icon {
+                vertical-align: middle;
+
+                &.solved {
+                    color: $success-color;
+                }
+
+                &.attempted {
+                    color: $warning-color;
+                }
+
+                &.unsolved,
+                &.locked {
+                    color: $text-muted;
+                    opacity: 0.5;
+                }
+            }
+        }
+
+        .col-title {
+            font-weight: 500;
+
+            .problem-link {
+                color: $text-main;
+                transition: color $transition-fast;
+
+                &:hover {
+                    color: $primary-color;
+                }
+            }
+
+            .locked-text {
+                color: $text-muted;
+            }
+        }
+
+        .col-acceptance {
+            width: 100px;
+        }
+
+        .col-difficulty {
+            width: 100px;
+
+            &.diff-easy {
+                color: $success-color;
+            }
+
+            &.diff-medium {
+                color: $warning-color;
+            }
+
+            &.diff-hard {
+                color: $error-color;
+            }
+        }
+
+        .empty-state {
+            padding: $spacing-2xl;
+            color: $text-muted;
+
+            &__content {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: $spacing-sm;
+                font-size: $font-base;
+                color: $text-secondary;
+            }
+        }
+    }
+}
