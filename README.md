@@ -1,6 +1,6 @@
 # CipherSQL Studio
 
-A LeetCode-style SQL practice platform. Write and run SQL queries against a live PostgreSQL sandbox, get AI-powered hints, and track your progress across 20 problems.
+A SQL practice platform. Write and run SQL queries against a live PostgreSQL sandbox, get AI-powered hints, and track your progress across 20 problems.
 
 Built with React, Node.js/Express, MongoDB, and PostgreSQL.
 
